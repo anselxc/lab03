@@ -1,0 +1,23 @@
+int i;
+float val=0,R=5000000,Vin=0,LR,R1,R2;
+void setup() {
+  Serial.begin(9600);
+  pinMode(14,INPUT);
+}
+
+void loop() {
+  val=analogRead(14);
+  for (i=0;i<=5;i++){
+  val= 0.7* val + 0.3* analogRead(14);
+  delay(100);
+  }
+  Vin = val * 5 / 4095;
+  LR=Vin* (R) / 5 ;
+  Serial.print(" value= ");
+  Serial.print(val);
+  Serial.print(" V= ");
+  Serial.print(Vin);
+  Serial.print(" LR= ");
+  Serial.println(LR);
+  delay(500);
+}
